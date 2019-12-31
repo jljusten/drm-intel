@@ -49,6 +49,7 @@ void intel_uc_fw_change_status(struct intel_uc_fw *uc_fw,
  * firmware as TGL.
  */
 #define INTEL_GUC_FIRMWARE_DEFS(fw_def, guc_def) \
+	fw_def(DG2,	     0, guc_def(dg2,  69, 0, 3)) \
 	fw_def(ALDERLAKE_P,  0, guc_def(adlp, 69, 0, 3)) \
 	fw_def(ALDERLAKE_S,  0, guc_def(tgl,  69, 0, 3)) \
 	fw_def(DG1,          0, guc_def(dg1,  69, 0, 3)) \
@@ -66,6 +67,7 @@ void intel_uc_fw_change_status(struct intel_uc_fw *uc_fw,
 	fw_def(SKYLAKE,      0, guc_def(skl,  69, 0, 3))
 
 #define INTEL_HUC_FIRMWARE_DEFS(fw_def, huc_def) \
+	fw_def(DG2,	     0, huc_def(dg2,  7, 9, 3)) \
 	fw_def(ALDERLAKE_P,  0, huc_def(tgl,  7, 9, 3)) \
 	fw_def(ALDERLAKE_S,  0, huc_def(tgl,  7, 9, 3)) \
 	fw_def(DG1,          0, huc_def(dg1,  7, 9, 3)) \
