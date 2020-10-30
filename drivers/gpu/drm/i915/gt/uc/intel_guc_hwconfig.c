@@ -137,6 +137,8 @@ static bool has_table(struct drm_i915_private *i915)
 {
 	if (IS_ADLP_GRAPHICS_STEP(i915, STEP_B0, STEP_FOREVER))
 		return 1;
+	if (IS_DG2_G11(i915) || IS_DG2_GRAPHICS_STEP(i915, G10, STEP_A2, STEP_FOREVER))
+		return 1;
 
 	return 0;
 }
