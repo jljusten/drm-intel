@@ -1057,6 +1057,7 @@ static const struct intel_device_info dg2_info = {
 	.require_force_probe = 1,
 	.display.cpu_transcoder_mask = BIT(TRANSCODER_A) | BIT(TRANSCODER_B) |
 			       BIT(TRANSCODER_C) | BIT(TRANSCODER_D),
+	.has_guc_hwconfig = 1,
 };
 
 #undef PLATFORM
