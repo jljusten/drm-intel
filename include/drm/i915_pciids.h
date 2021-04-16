@@ -681,4 +681,36 @@
 	INTEL_VGA_DEVICE(0xA788, info), \
 	INTEL_VGA_DEVICE(0xA789, info)
 
+/*
+ * DG2
+ *
+ */
+#define INTEL_DG2_G10_IDS(info) \
+	INTEL_VGA_DEVICE(0x4F80, info), /* validation Super-SKU */ \
+	INTEL_VGA_DEVICE(0x4F81, info), /* validation Super-SKU */ \
+	INTEL_VGA_DEVICE(0x4F82, info), /* validation Super-SKU */ \
+	INTEL_VGA_DEVICE(0x4F83, info), /* validation Super-SKU */ \
+	INTEL_VGA_DEVICE(0x4F84, info), /* validation Super-SKU */ \
+	INTEL_VGA_DEVICE(0x5690, info), \
+	INTEL_VGA_DEVICE(0x5691, info), \
+	INTEL_VGA_DEVICE(0x5692, info), \
+	INTEL_VGA_DEVICE(0x56A0, info), \
+	INTEL_VGA_DEVICE(0x56A1, info), \
+	INTEL_VGA_DEVICE(0x56A2, info)
+
+#define INTEL_DG2_G11_IDS(info) \
+	INTEL_VGA_DEVICE(0x4F87, info), /* validation Super-SKU */ \
+	INTEL_VGA_DEVICE(0x4F88, info), /* validation Super-SKU */ \
+	INTEL_VGA_DEVICE(0x56A5, info), \
+	INTEL_VGA_DEVICE(0x56A6, info), \
+	INTEL_VGA_DEVICE(0x5693, info), \
+	INTEL_VGA_DEVICE(0x5694, info), \
+	INTEL_VGA_DEVICE(0x5695, info), \
+	INTEL_VGA_DEVICE(0x56B0, info), \
+	INTEL_VGA_DEVICE(0x56B1, info)
+
+#define INTEL_DG2_IDS(info) \
+	INTEL_DG2_G10_IDS(info), \
+	INTEL_DG2_G11_IDS(info)
+
 #endif /* _I915_PCIIDS_H */
