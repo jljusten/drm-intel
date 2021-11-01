@@ -516,7 +516,7 @@ static int __uc_init_hw(struct intel_uc *uc)
 	 */
 	ret = intel_guc_hwconfig_init(&guc->hwconfig);
 	if (ret)
-		drm_err(&i915->drm, "Failed to retrieve hwconfig table: %d\n", ret);
+		i915_probe_error(i915, "Failed to retrieve hwconfig table: %d\n", ret);
 
 	if (intel_uc_uses_guc_submission(uc))
 		intel_guc_submission_enable(guc);
