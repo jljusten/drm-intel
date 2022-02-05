@@ -81,6 +81,25 @@ static int guc_hwconfig_discover_size(struct intel_guc_hwconfig *hwconfig)
 	return 0;
 }
 
+static int verify_hwconfig_blob(const struct intel_guc_hwconfig *hwconfig)
+{
+	if (hwconfig->size % 4 != 0 || hwconfig->ptr == NULL)
+		return -EINVAL;
+
+	struct drm_i915_query_hwconfig_blob_item *pos = hwconfig->ptr;
+	u32 remaining = (hwconfig->size / 4);
+	while (remaining > 0) {
+		if (remaining < 2)
+			return -EINVAL;
+		if (pos->length > remaining - 2)
+			return -EINVAL;
+		remaining -= 2 + pos->length;
+		pos = (void *)&pos->data[pos->length];
+	}
+
+	return 0;
+}
+
 static int guc_hwconfig_fill_buffer(struct intel_guc_hwconfig *hwconfig)
 {
 	struct intel_guc *guc = hwconfig_to_guc(hwconfig);
@@ -100,6 +119,9 @@ static int guc_hwconfig_fill_buffer(struct intel_guc_hwconfig *hwconfig)
 	ret = __guc_action_get_hwconfig(hwconfig, ggtt_offset, hwconfig->size);
 	if (ret >= 0)
 		memcpy(hwconfig->ptr, vaddr, hwconfig->size);
+
+	if (verify_hwconfig_blob(hwconfig))
+		return -EINVAL;
 
 	i915_vma_unpin_and_release(&vma, I915_VMA_RELEASE_MAP);
 
