@@ -479,8 +479,8 @@ static int query_memregion_info(struct drm_i915_private *i915,
 	return total_length;
 }
 
-static int query_hwconfig_table(struct drm_i915_private *i915,
-				struct drm_i915_query_item *query_item)
+static int query_hwconfig_blob(struct drm_i915_private *i915,
+			       struct drm_i915_query_item *query_item)
 {
 	struct intel_guc_hwconfig *hwconfig = &to_gt(i915)->uc.guc.hwconfig;
 
@@ -509,8 +509,7 @@ static int (* const i915_query_funcs[])(struct drm_i915_private *dev_priv,
 	query_engine_info,
 	query_perf_config,
 	query_memregion_info,
-	NULL, /* 5 is reserved */
-	query_hwconfig_table,
+	query_hwconfig_blob,
 };
 
 int i915_query_ioctl(struct drm_device *dev, void *data, struct drm_file *file)
