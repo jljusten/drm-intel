@@ -106,6 +106,7 @@ static int verify_hwconfig_blob(struct intel_guc_hwconfig *hwconfig)
 		item = (void *)&item->data[item->length];
 	}
 
+	drm_err(drm, "hwconfig blob is valid (size %lld)\n", offset);
 	return 0;
 }
 
